@@ -54,6 +54,7 @@ public enum CoinID {
     VPNCOIN_MAIN(VpncoinMain.get()),
     VCOIN_MAIN(VcoinMain.get()),
     VIACOIN_MAIN(ViacoinMain.get()),
+    FAIRCOIN_MAIN(FairCoinMain.get()),
     ;
 
     private static List<CoinType> types;

@@ -18,6 +18,7 @@ import com.mygeopay.core.coins.DigitalcoinMain;
 import com.mygeopay.core.coins.DogecoinDarkMain;
 import com.mygeopay.core.coins.DogecoinMain;
 import com.mygeopay.core.coins.DogecoinTest;
+import com.mygeopay.core.coins.FairCoinMain;
 import com.mygeopay.core.coins.FeathercoinMain;
 import com.mygeopay.core.coins.LitecoinMain;
 import com.mygeopay.core.coins.LitecoinTest;
@@ -198,7 +199,10 @@ public class Constants {
                                                     new ServerAddress("192.241.216.229", 50002)),
             // electrum.bta.xyz
             new CoinAddress(VpncoinMain.get(),      new ServerAddress("vpn-cce-1.coinomi.net", 5032),
-                                                    new ServerAddress("vpn-cce-2.coinomi.net", 5032))
+                                                    new ServerAddress("vpn-cce-2.coinomi.net", 5032)),
+            // FairCoin
+            new CoinAddress(FairCoinMain.get(),     new ServerAddress("laptop.tom.linuxit.at", 51001),
+                                                    new ServerAddress("fairlectrum.fair-coin.org", 51002))
     );
 
     public static final HashMap<CoinType, Integer> COINS_ICONS;
@@ -243,6 +247,7 @@ public class Constants {
         COINS_ICONS.put(CoinID.NOVACOIN_MAIN.getCoinType(), R.drawable.novacoin);
         COINS_ICONS.put(CoinID.VIACOIN_MAIN.getCoinType(), R.drawable.viacoin);
         COINS_ICONS.put(CoinID.STEPSCOIN_MAIN.getCoinType(), R.drawable.steps);
+        COINS_ICONS.put(CoinID.FAIRCOIN_MAIN.getCoinType(), R.drawable.faircoin);
 
         COINS_BLOCK_EXPLORERS = new HashMap<CoinType, String>();
         COINS_BLOCK_EXPLORERS.put(CoinID.BITCOIN_MAIN.getCoinType(), "https://blockchain.info/tx/%s");
@@ -283,6 +288,7 @@ public class Constants {
         COINS_BLOCK_EXPLORERS.put(CoinID.NOVACOIN_MAIN.getCoinType(), "http://explorer.novaco.in/tx/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.VIACOIN_MAIN.getCoinType(), "http://explorer.viacoin.org/tx/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.STEPSCOIN_MAIN.getCoinType(), "http://chain.altcoinsteps.com/tx/%s");
+        COINS_BLOCK_EXPLORERS.put(CoinID.FAIRCOIN_MAIN.getCoinType(), "https://chain.fair-coin.org/tx/%s");
     }
 
     public static final CoinType DEFAULT_COIN = BitcoinMain.get();
@@ -327,6 +333,7 @@ public class Constants {
 /*            VcoinMain.get(), */
             ParkbyteMain.get(),
 /*            CryptoescudoMain.get(), */
+            FairCoinMain.get(),
             BitcoinTest.get(),
             LitecoinTest.get(),
             DogecoinTest.get()
