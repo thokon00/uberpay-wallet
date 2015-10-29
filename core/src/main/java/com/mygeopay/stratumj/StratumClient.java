@@ -14,6 +14,8 @@ import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.net.SocketFactory;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -126,15 +128,24 @@ public class StratumClient extends AbstractExecutionThreadService {
         serverAddress = new ServerAddress(host, port);
     }
 
+    public StratumClient(String host, int port, boolean ssl) {
+        serverAddress = new ServerAddress(host, port, ssl);
+    }
+
     public long getCurrentId() {
         return idCounter.get();
     }
 
     protected Socket createSocket() throws IOException {
         ServerAddress address = serverAddress;
-        log.debug("Opening a socket to " + address.getHost() + ":" + address.getPort());
 
-        return new Socket(address.getHost(), address.getPort());
+        log.debug("Opening a" + (address.isSsl() ? "n SSL " : " ") + "socket to " + address.getHost() + ":" + address.getPort());
+
+        if (address.isSsl()) {
+            SocketFactory socketFactory = AcceptAllCertsSslSocketFactory.getDefault();
+            return socketFactory.createSocket(address.getHost(), address.getPort());
+        } else
+            return new Socket(address.getHost(), address.getPort());
     }
 
     @Override
@@ -158,7 +169,8 @@ public class StratumClient extends AbstractExecutionThreadService {
         super.triggerShutdown();
         try {
             log.info("Shutting down {}", serverAddress);
-            if (isConnected()) socket.close();
+            if (isConnected())
+                socket.close();
         } catch (IOException e) {
             log.error("Unable to close socket", e);
         }

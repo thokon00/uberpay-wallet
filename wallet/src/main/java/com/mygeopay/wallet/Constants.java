@@ -201,8 +201,8 @@ public class Constants {
             new CoinAddress(VpncoinMain.get(),      new ServerAddress("vpn-cce-1.coinomi.net", 5032),
                                                     new ServerAddress("vpn-cce-2.coinomi.net", 5032)),
             // FairCoin
-            new CoinAddress(FairCoinMain.get(),     new ServerAddress("laptop.tom.linuxit.at", 51001),
-                                                    new ServerAddress("fairlectrum.fair-coin.org", 51002))
+            new CoinAddress(FairCoinMain.get(),     new ServerAddress("chain.fair-coin.org", 51001, true),
+                                                    new ServerAddress("fairlectrum.fair-coin.org", 51002, true))
     );
 
     public static final HashMap<CoinType, Integer> COINS_ICONS;
